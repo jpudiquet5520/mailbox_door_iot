@@ -1,7 +1,7 @@
 #include <WiFi.h> // Include the WiFi library
 
-const char* ssid     = "Lodge of La Mesa";     // Replace with your WiFi network name
-const char* password = "welcome!"; // Replace with your WiFi password
+const char* ssid     = "wifi network name";     // Replace with your WiFi network name
+const char* password = "password"; // Replace with your WiFi password
 
 void setup() {
   Serial.begin(115200);        // Start the Serial communication to output the status
