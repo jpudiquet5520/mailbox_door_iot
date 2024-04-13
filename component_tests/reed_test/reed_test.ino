@@ -15,6 +15,7 @@ void loop() {
   else {
     Serial.println("No Magnet Detected.");
   }
+  Serial.println("Still Checking");
   delay(500); // Delay to prevent spamming (adjust as necessary)
 }
 
