@@ -1,9 +1,11 @@
 #include <WiFi.h> // Include the WiFi library
 
-const char* ssid     = "wifi network name";     // Replace with your WiFi network name
-const char* password = "password"; // Replace with your WiFi password
+const char* ssid     = "ssid";     // Replace with your WiFi network name
+const char* password = "wifi password"; // Replace with your WiFi password
 
 void setup() {
+
+                               /******MAKE SURE THE Serial.begin(115200) --> 115200 == Baud(on Arduino IDE)*******/
   Serial.begin(115200);        // Start the Serial communication to output the status
   WiFi.begin(ssid, password);  // Begin connecting to WiFi
 
