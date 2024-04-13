@@ -44,7 +44,7 @@ HTTPClient http;  //for posting
 //Define the door Sensor PIN and initial state (Depends on your reed sensor N/C  or N/O )
 gpio_num_t  doorSensorPIN = GPIO_NUM_12;  // Reed GPIO PIN:
 gpio_num_t GPIO_INPUT_IO_TRIGGER = doorSensorPIN;
-int GPIO_DOOR_CLOSED_STATE= LOW ;  //Default state when the reed and magent are next to each other (depends on reed switch)
+int GPIO_DOOR_CLOSED_STATE= LOW ;  //Default state when the reed and magnet are next to each other (depends on reed switch)
 int GPIO_DOOR_OPEN_STATE = !GPIO_DOOR_CLOSED_STATE;  //Open state is oposite f closed
 
 //RTC Memory attribute is retained across resets
@@ -78,28 +78,29 @@ void print_wakeup_reason(){
 
 /* Connect to Wifi but test for sensor closed or timeouts and issue sleep to conserver battery */
 void setup_wifi() {
-   start_time=millis();
+   start_time=millis(); // Start time is assigned the current number of milliseconds since the ESP32 started running
   
   // We start by connecting to a WiFi network
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(wifi_ssid);
-  WiFi.disconnect();
+  WiFi.disconnect(); // Disconnects any existing WiFi connections that the ESP32 might have.
 
   Serial.printf("Trying to connec to WiFi: %s, p/w: %s ... \n",wifi_ssid,wifi_password);
-  WiFi.begin(wifi_ssid, wifi_password);
+  WiFi.begin(wifi_ssid, wifi_password); //Initializing the connection to the WiFi network
 
- int count=0;
+  int count=0; // Control the formatting of output dots, indicating ongoing connection attempts.
 
+  // This loop continues until the WiFi is connected.
   while (WiFi.status() != WL_CONNECTED) {
     
     count++;
-   if ( count % 40==0 )
-    Serial.print("\n");
+    if ( count % 40==0 ) // Every 40 iterations print a newline character to avoid too long a line of dots on serial monitor.
+      Serial.print("\n");
     else
-   Serial.print(".");
+      Serial.print(".");
 
-    delay(25);
+    delay(25); // Pauses loop for 25ms between each iteration
     
     if (millis()- start_time > wifi_timeout )  //did wifi fail to connect then time out
     {
@@ -107,9 +108,9 @@ void setup_wifi() {
             esp32_sleep();
         }
   
-  }
+  }//End of while()
   
-  rssi= WiFi.RSSI();
+  rssi= WiFi.RSSI(); //RSSI = indication of the quality of the WiFi connection
   Serial.println( "\n WiFi connected in " +(String)(millis()- start_time ) + "ms to AP:"+wifi_ssid+ " Rssi:"+(String)rssi );
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
@@ -194,12 +195,12 @@ void runtime(unsigned long ms )
 void esp32_sleep()
 {
   //Go to sleep now
-   time_awake_millis=time_awake_millis+(millis()-currentMillis  );
-   last_doorState=digitalRead(doorSensorPIN) ;  //store the last door state generally should be closed
+  time_awake_millis=time_awake_millis+(millis()-currentMillis);
+  last_doorState=digitalRead(doorSensorPIN) ;  //store the last door state generally should be closed
   Serial.printf("\n DoorState %d Last Door State  %d  Awake ms: %ld",doorState,last_doorState,time_awake_millis);
-    Serial.println("\nGoing to sleep now");  
-   esp_deep_sleep_start(); //Enter deep sleep
-   Serial.println("This will never be printed");
+  Serial.println("\nGoing to sleep now");  
+  esp_deep_sleep_start(); //Enter deep sleep
+  Serial.println("This will never be printed");
 }
 
 
