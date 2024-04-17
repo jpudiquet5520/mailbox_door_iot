@@ -1,7 +1,14 @@
-# mailbox_door_iot
+# Mailbox Door Notification IoT
+
+## Description
+This is a simple mailbox door notification internet of things project. 
 
 
-## ESP32 Modules
+## Team
+- Jake Stonebraker - Project Manager, Hardware
+- Bryce Garrod - IoT Design/Prototype
+- Justin Pudiquet - IoT Tester
 
-[Wifi.h](https://www.arduino.cc/reference/en/libraries/wifi/)
-
+## References
+Complete dettailed description here: [https://github.com/acbrandao/arduino_projects/tree/master/esp32_mailbox](https://github.com/acbrandao/arduino_projects/tree/master/esp32_mailbox)  
+Github Repo: [https://www.abrandao.com/2018/04/arduino_esp32_battery_wifi_door_mailbox_sensor/](https://www.abrandao.com/2018/04/arduino_esp32_battery_wifi_door_mailbox_sensor/)
