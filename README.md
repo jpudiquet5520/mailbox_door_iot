@@ -4,13 +4,13 @@
 This is a simple mailbox door notification internet of things project. 
 
 
-<<<<<<< HEAD
 ## ESP32 Modules
 
 [Wifi.h](https://www.arduino.cc/reference/en/libraries/wifi/)
 [PubSubClient.h](https://www.arduino.cc/reference/en/libraries/pubsubclient/)
 [HTTPClient.h](https://www.arduino.cc/reference/en/libraries/httpclient/)
-=======
+
+
 ## Team
 - Jake Stonebraker - Project Manager, Hardware
 - Bryce Garrod - IoT Design/Prototype
